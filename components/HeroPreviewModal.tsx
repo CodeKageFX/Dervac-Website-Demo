@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { X, Server, Shield, Cpu, Activity, CheckCircle, Database, Network } from "lucide-react";
-import Image from "next/image";
 
 interface HeroPreviewModalProps {
   isOpen: boolean;
@@ -15,71 +14,72 @@ export function HeroPreviewModal({ isOpen, onClose }: HeroPreviewModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-      <div className="fixed inset-0 bg-black/85 backdrop-blur-md" onClick={onClose} />
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
+      <div className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity" onClick={onClose} />
 
-      <div className="relative w-full max-w-4xl bg-[#0c0e14] border border-white/10 rounded-2xl overflow-hidden shadow-2xl z-10 my-8">
-        {/* Header bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.02]">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5">
-              <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-              <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block" />
-              <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block" />
+      {/* Modal Window: Constrained to screen height on mobile and desktop */}
+      <div className="relative w-full max-w-4xl bg-[#0c0e14] border border-white/10 rounded-t-3xl sm:rounded-2xl overflow-hidden shadow-2xl z-10 max-h-[92dvh] sm:max-h-[88vh] flex flex-col my-0 sm:my-4">
+        {/* Sticky Header with high-visibility close button */}
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 bg-[#0c0e14] shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="flex items-center gap-1.5 shrink-0">
+              <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500/80 inline-block" />
+              <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500/80 inline-block" />
+              <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500/80 inline-block" />
             </div>
-            <span className="text-xs text-zinc-400 font-mono pl-2 border-l border-white/10">
+            <span className="text-[11px] sm:text-xs text-zinc-400 font-mono pl-2 border-l border-white/10 truncate">
               dervac-systems-console // v4.2.0-live
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5"
+            className="p-2 sm:p-2.5 rounded-xl bg-white/[0.08] hover:bg-white/15 text-zinc-200 hover:text-white transition-colors flex items-center justify-center shrink-0 min-w-[40px] min-h-[40px] border border-white/10 shadow-sm ml-2"
             aria-label="Close interactive console"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Tab switcher */}
-        <div className="flex border-b border-white/10 bg-black/40 px-6 gap-2">
+        {/* Tab switcher: scrollable horizontally on mobile */}
+        <div className="flex border-b border-white/10 bg-black/40 px-3 sm:px-6 gap-2 overflow-x-auto shrink-0 scrollbar-none">
           <button
             onClick={() => setActiveTab("infrastructure")}
-            className={`flex items-center gap-2 py-3 px-4 text-xs font-semibold border-b-2 transition-all ${
+            className={`flex items-center gap-2 py-3 px-3 sm:px-4 text-xs font-semibold border-b-2 whitespace-nowrap shrink-0 transition-all ${
               activeTab === "infrastructure"
-                ? "border-blue-500 text-white bg-white/[0.04]"
+                ? "border-[#4a8ec9] text-white bg-white/[0.04]"
                 : "border-transparent text-zinc-400 hover:text-zinc-200"
             }`}
           >
-            <Server className="w-3.5 h-3.5 text-blue-400" />
+            <Server className="w-3.5 h-3.5 text-[#4a8ec9]" />
             Enterprise Infrastructure & Servers
           </button>
           <button
             onClick={() => setActiveTab("software")}
-            className={`flex items-center gap-2 py-3 px-4 text-xs font-semibold border-b-2 transition-all ${
+            className={`flex items-center gap-2 py-3 px-3 sm:px-4 text-xs font-semibold border-b-2 whitespace-nowrap shrink-0 transition-all ${
               activeTab === "software"
-                ? "border-indigo-500 text-white bg-white/[0.04]"
+                ? "border-[#4a8ec9] text-white bg-white/[0.04]"
                 : "border-transparent text-zinc-400 hover:text-zinc-200"
             }`}
           >
-            <Cpu className="w-3.5 h-3.5 text-indigo-400" />
+            <Cpu className="w-3.5 h-3.5 text-[#4a8ec9]" />
             Custom Software & Integration Stack
           </button>
           <button
             onClick={() => setActiveTab("cbt")}
-            className={`flex items-center gap-2 py-3 px-4 text-xs font-semibold border-b-2 transition-all ${
+            className={`flex items-center gap-2 py-3 px-3 sm:px-4 text-xs font-semibold border-b-2 whitespace-nowrap shrink-0 transition-all ${
               activeTab === "cbt"
-                ? "border-emerald-500 text-white bg-white/[0.04]"
+                ? "border-[#4a8ec9] text-white bg-white/[0.04]"
                 : "border-transparent text-zinc-400 hover:text-zinc-200"
             }`}
           >
-            <Network className="w-3.5 h-3.5 text-emerald-400" />
+            <Network className="w-3.5 h-3.5 text-[#4a8ec9]" />
             Nationwide CBT Center Architecture
           </button>
         </div>
 
-        {/* Content View */}
-        <div className="p-6 sm:p-8 space-y-6">
+        {/* Scrollable Content View */}
+        <div className="overflow-y-auto flex-1 p-4 sm:p-8 space-y-6 overscroll-contain">
           {activeTab === "infrastructure" && (
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -95,7 +95,7 @@ export function HeroPreviewModal({ isOpen, onClose }: HeroPreviewModalProps) {
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10">
                   <div className="text-xs text-zinc-400 mb-1 flex items-center justify-between">
                     <span>Server Virtualization</span>
-                    <span className="w-2 h-2 rounded-full bg-blue-400" />
+                    <span className="w-2 h-2 rounded-full bg-[#4a8ec9]" />
                   </div>
                   <div className="text-xl font-bold text-white">VMware / Proxmox</div>
                   <div className="text-xs text-zinc-500 mt-1">Zero-downtime live workload migration</div>
@@ -104,16 +104,16 @@ export function HeroPreviewModal({ isOpen, onClose }: HeroPreviewModalProps) {
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10">
                   <div className="text-xs text-zinc-400 mb-1 flex items-center justify-between">
                     <span>Network Backbone</span>
-                    <span className="w-2 h-2 rounded-full bg-purple-400" />
+                    <span className="w-2 h-2 rounded-full bg-[#4a8ec9]" />
                   </div>
                   <div className="text-xl font-bold text-white">10GbE Fiber Ring</div>
                   <div className="text-xs text-zinc-500 mt-1">Certified Cat6A & Single-mode Fiber</div>
                 </div>
               </div>
 
-              <div className="p-5 rounded-xl bg-blue-950/20 border border-blue-500/20 flex flex-col sm:flex-row items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-6 h-6 text-blue-400" />
+              <div className="p-5 rounded-xl bg-[#224c75]/20 border border-[#224c75]/30 flex flex-col sm:flex-row items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-[#224c75]/30 flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 text-[#4a8ec9]" />
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-white">
@@ -131,7 +131,7 @@ export function HeroPreviewModal({ isOpen, onClose }: HeroPreviewModalProps) {
             <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
-                  <div className="flex items-center gap-2 text-indigo-400 text-xs font-semibold">
+                  <div className="flex items-center gap-2 text-[#4a8ec9] text-xs font-semibold">
                     <Database className="w-4 h-4" />
                     <span>Data & API Middleware</span>
                   </div>

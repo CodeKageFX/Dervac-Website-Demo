@@ -44,40 +44,41 @@ export function ConsultationModal({ isOpen, onClose, defaultService = "General I
   const whatsappHref = `https://wa.me/${companyData.contacts.whatsapp.replace(/[^0-9]/g, "")}?text=${whatsappText}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-hidden">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modal Window */}
-      <div className="relative w-full max-w-2xl bg-[#0f1118] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl z-10 my-8">
-        {/* Header */}
-        <div className="flex items-start justify-between pb-4 border-b border-white/10">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-medium text-blue-400 mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+      {/* Modal Window: Constrained to screen height on mobile and desktop */}
+      <div className="relative w-full max-w-2xl bg-[#0f1118] border border-white/10 rounded-t-3xl sm:rounded-2xl shadow-2xl z-10 max-h-[92dvh] sm:max-h-[88vh] flex flex-col overflow-hidden my-0 sm:my-4">
+        {/* Sticky Header with Always-Visible Close Button */}
+        <div className="flex items-start justify-between p-4 sm:p-6 border-b border-white/10 bg-[#0f1118] shrink-0 gap-3">
+          <div className="min-w-0 pr-2">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#224c75]/25 border border-[#224c75]/40 text-[11px] sm:text-xs font-medium text-[#4a8ec9] mb-1.5 sm:mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4a8ec9] animate-pulse" />
               Direct Engineering Consultation
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white">
-              Connect With Dervac Solution Architects
+            <h3 className="text-lg sm:text-2xl font-bold text-white leading-tight">
+              Connect With Dervac Architects
             </h3>
-            <p className="text-sm text-zinc-400 mt-1">
+            <p className="text-xs sm:text-sm text-zinc-400 mt-1 line-clamp-1 sm:line-clamp-none">
               Discuss enterprise infrastructure, custom software, CBT centres, or tech training.
             </p>
           </div>
+
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+            className="p-2.5 sm:p-2 rounded-xl bg-white/[0.08] hover:bg-white/15 text-zinc-200 hover:text-white transition-colors flex items-center justify-center shrink-0 min-w-[40px] min-h-[40px] border border-white/10 shadow-sm"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Content Form */}
-        <div className="space-y-4 pt-6">
+        {/* Scrollable Content Form */}
+        <div className="overflow-y-auto flex-1 p-4 sm:p-6 space-y-4 overscroll-contain">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-medium text-zinc-300 mb-1.5">
@@ -194,32 +195,32 @@ export function ConsultationModal({ isOpen, onClose, defaultService = "General I
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <a
                 href={mailtoHref}
-                className="hero-gradient-btn flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-white font-medium text-sm transition-all"
+                className="btn-dervac-primary hero-gradient-btn flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-white font-medium text-sm transition-all text-center"
               >
-                <Send className="w-4 h-4" />
-                Send via Official Email
+                <Send className="w-4 h-4 shrink-0" />
+                <span>Send via Official Email</span>
               </a>
 
               <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-600/30 font-medium text-sm transition-all"
+                className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-emerald-600/20 border border-emerald-500/30 text-emerald-300 hover:bg-emerald-600/30 font-medium text-sm transition-all text-center"
               >
-                <MessageSquare className="w-4 h-4" />
-                Chat Directly on WhatsApp
+                <MessageSquare className="w-4 h-4 shrink-0" />
+                <span>Chat Directly on WhatsApp</span>
               </a>
             </div>
           </div>
 
-          <div className="text-center pt-2 border-t border-white/5">
+          <div className="text-center pt-2 border-t border-white/5 pb-2">
             <p className="text-xs text-zinc-500">
               Need immediate phone assistance? Call our direct line:{" "}
               <a
                 href={`tel:${companyData.contacts.generalPhone}`}
                 className="text-zinc-300 hover:text-white font-medium underline inline-flex items-center gap-1"
               >
-                <PhoneCall className="w-3 h-3 text-blue-400" />
+                <PhoneCall className="w-3 h-3 text-[#4a8ec9]" />
                 {companyData.contacts.generalPhone}
               </a>
             </p>
