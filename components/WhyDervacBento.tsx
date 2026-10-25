@@ -78,7 +78,7 @@ export function WhyDervacBento() {
             </div>
 
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-medium mb-2">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#224C75]/20 text-[#6ba4d9] border border-[#224C75]/40 text-xs font-medium mb-2">
                 Certified Practitioners
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -117,7 +117,7 @@ export function WhyDervacBento() {
                     onClick={() => setActiveStep(idx)}
                     className={`p-3 rounded-xl text-center border transition-all ${
                       activeStep === idx
-                        ? "bg-white/15 border-blue-500 text-white shadow-md shadow-blue-500/20"
+                        ? "bg-white/15 border-[#224C75] text-white shadow-md shadow-[#224C75]/30"
                         : "bg-white/[0.02] border-white/5 text-zinc-400 hover:bg-white/[0.05]"
                     }`}
                   >
@@ -132,7 +132,7 @@ export function WhyDervacBento() {
               {/* Active Step Details */}
               <div className="p-5 rounded-xl bg-white/[0.03] border border-white/10">
                 <div className="flex items-center gap-2 text-sm font-bold text-white mb-1">
-                  <span className="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 text-xs font-mono">
+                  <span className="px-2 py-0.5 rounded bg-[#224C75]/30 text-[#6ba4d9] text-xs font-mono">
                     Step {deliverySteps[activeStep].num}
                   </span>
                   <span>{deliverySteps[activeStep].title}</span>

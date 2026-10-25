@@ -1,25 +1,29 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
-import { EcosystemBar } from "@/components/EcosystemBar";
-import { ValueProposition } from "@/components/ValueProposition";
-import { ServicesGrid } from "@/components/ServicesGrid";
-import { WhyDervacBento } from "@/components/WhyDervacBento";
-import { ProductsShowcase } from "@/components/ProductsShowcase";
-import { CustomerServiceBanner } from "@/components/CustomerServiceBanner";
-import { InteractiveEstimator } from "@/components/InteractiveEstimator";
-import { FloatingBackgroundIcons } from "@/components/FloatingBackgroundIcons";
+import { Introduction } from "@/components/Introduction";
+import { CoreServices } from "@/components/CoreServices";
+import { ProductsSolutions } from "@/components/ProductsSolutions";
+import { PartnersEcosystem } from "@/components/PartnersEcosystem";
+import { ContactCTA } from "@/components/ContactCTA";
+
+export const metadata: Metadata = {
+  title: "Dervac Global Services Ltd | Enterprise ICT Solutions, Software & Infrastructure",
+  description:
+    "Leading indigenous ICT firm in Lagos, Nigeria. Turnkey enterprise infrastructure, custom software engineering, CBT examination centres, and tech skills incubation across West Africa.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col bg-[#08090d] relative overflow-hidden">
-      <FloatingBackgroundIcons />
+    <main className="min-h-screen flex flex-col bg-white">
       <Hero />
-      <EcosystemBar />
-      <ValueProposition />
-      <ServicesGrid />
-      <WhyDervacBento />
-      <ProductsShowcase />
-      <CustomerServiceBanner />
-      <InteractiveEstimator />
+      <Introduction />
+      <CoreServices />
+      <ProductsSolutions />
+      <PartnersEcosystem />
+      <ContactCTA />
     </main>
   );
 }

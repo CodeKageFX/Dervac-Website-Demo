@@ -18,45 +18,42 @@ export function PageHeader({
   breadcrumbs,
 }: PageHeaderProps) {
   return (
-    <div className="relative pt-24 sm:pt-28 pb-8 sm:pb-10 bg-[#08090d] border-b border-white/[0.06] overflow-hidden">
-      {/* Background radial glow */}
-      <div className="ambient-glow-purple -top-40 left-1/2 -translate-x-1/2 opacity-30" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div className="relative pt-10 sm:pt-14 pb-10 sm:pb-12 bg-[#F9FAFB] border-b border-gray-200/80">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb nav */}
-        <nav className="flex items-center gap-1.5 text-xs text-zinc-400 mb-3 font-medium">
-          <Link href="/" className="hover:text-white transition-colors">
+        <nav className="flex items-center gap-1.5 text-xs text-gray-500 mb-4 font-medium" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-gray-900 transition-colors">
             Home
           </Link>
           {breadcrumbs.map((crumb, idx) => (
             <React.Fragment key={idx}>
-              <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+              <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
               {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-white transition-colors">
+                <Link href={crumb.href} className="hover:text-gray-900 transition-colors">
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-zinc-200">{crumb.label}</span>
+                <span className="text-gray-800 font-semibold">{crumb.label}</span>
               )}
             </React.Fragment>
           ))}
         </nav>
 
         {/* Pill Badge */}
-        <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-semibold text-zinc-300 uppercase tracking-wider mb-2.5">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#224C75]/10 border border-[#224C75]/20 text-[#224C75] text-xs font-semibold uppercase tracking-wider mb-3">
           {badge}
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mb-2.5">
-          {title}{" "}
+        <h1 className="text-2xl sm:text-4xl lg:text-[40px] font-normal tracking-[-0.02em] leading-tight text-gray-900 max-w-3xl mb-3">
+          <span className="font-medium">{title}</span>{" "}
           {highlightedTitle && (
-            <span className="text-[#4a8ec9]">{highlightedTitle}</span>
+            <span className="text-gray-500 font-normal">{highlightedTitle}</span>
           )}
         </h1>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-zinc-400 max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-600 max-w-2xl leading-relaxed">
           {description}
         </p>
       </div>

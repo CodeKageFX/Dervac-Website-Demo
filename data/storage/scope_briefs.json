@@ -1,0 +1,20 @@
+[
+  {
+    "reference": "DRV-SCP-20261017-9E27",
+    "solution": "CBT Examination Centre Setup",
+    "timeline": "Fast-Track ( 30 Days)",
+    "scale": "Large / Campus (250+ Users)",
+    "deliverables": [
+      "Client PC Workstations",
+      "Isolated Subnet LAN Routing",
+      "Secure Anti-Cheating Environment"
+    ],
+    "customNotes": "Need setup for upcoming JAMB accreditation window.",
+    "contactName": "Prof. Ibrahim Yusuf",
+    "email": "iyusuf@lagosstatepoly.edu.ng",
+    "phone": "+2348035556677",
+    "organization": "Lagos State Polytechnic",
+    "ipMasked": "::1::****",
+    "createdAt": "2026-10-17T12:51:02.580Z"
+  }
+]

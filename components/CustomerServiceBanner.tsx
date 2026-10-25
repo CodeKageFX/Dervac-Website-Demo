@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Headphones, PhoneCall, ShieldCheck, Clock, CheckCircle2, ArrowRight } from "lucide-react";
+import { Headphones, PhoneCall, CheckCircle2, ArrowRight } from "lucide-react";
 import { companyData } from "@/data/company";
 
 export function CustomerServiceBanner() {

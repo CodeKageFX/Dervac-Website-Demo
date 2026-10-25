@@ -31,13 +31,13 @@ export const productsData: ProductItem[] = [
     ],
     benefits: [
       "Eliminates handwritten diagnostic report errors and transcription delays",
-      "Accelerates patient turnaround time by up to 60%",
+      "Significantly accelerates patient turnaround and diagnostic report delivery",
       "Provides clinic management with real-time financial and operational audits",
       "Allows referring physicians to securely preview test results online",
     ],
     specifications: [
       { label: "Deployment", value: "Cloud-hosted or On-premise Local Server" },
-      { label: "Compliance", value: "HIPAA-aligned & NDPR Compliant" },
+      { label: "Compliance", value: "NDPA 2023 Principles Aligned" },
       { label: "Interface", value: "Responsive Web / Tablet-optimized" },
       { label: "Data Backups", value: "Automated Encrypted Daily Snapshots" },
     ],
@@ -66,8 +66,8 @@ export const productsData: ProductItem[] = [
       "Full audit trail for accreditation inspections and regulatory checks",
     ],
     specifications: [
-      { label: "Analyzer Protocols", value: "ASTM E1381/E1394 & HL7 Compatible" },
-      { label: "Security", value: "256-bit AES Encryption at Rest and in Transit" },
+      { label: "Analyzer Protocols", value: "Standard Laboratory Instrument Interfacing (ASTM & HL7)" },
+      { label: "Security", value: "256-bit AES Encryption at Rest with TLS 1.3 in Transit" },
       { label: "Multi-branch", value: "Centralized HQ with Distributed Collection Centers" },
       { label: "Reporting", value: "Customizable Branded Header & Pathologist Signatures" },
     ],
@@ -96,10 +96,10 @@ export const productsData: ProductItem[] = [
       "Instant target redirect modifications without altering distributed marketing materials",
     ],
     specifications: [
-      { label: "Throughput", value: "Sub-15ms Redirection Latency" },
+      { label: "Throughput", value: "High-Throughput Edge Routing" },
       { label: "API", value: "RESTful JSON API with Webhook Event Triggers" },
       { label: "Custom Domains", value: "Unlimited SSL-secured Corporate Domains" },
-      { label: "Analytics", value: "GDPR/NDPR compliant non-invasive telemetry" },
+      { label: "Analytics", value: "NDPA 2023 Compliant Privacy-First Telemetry" },
     ],
     status: "Active Deployment",
   },
@@ -127,7 +127,7 @@ export const productsData: ProductItem[] = [
     ],
     specifications: [
       { label: "Location", value: "65 & 76 Shipeolu Street, Palmgrove, Lagos" },
-      { label: "Power", value: "Guaranteed 100% Redundant Generator + Inverter" },
+      { label: "Power", value: "Heavy-Duty Dedicated Generator & Solar Inverter Bank" },
       { label: "Internet", value: "Dual Dedicated Fiber-to-the-Premises (FTTP)" },
       { label: "Access", value: "Biometric Card Entry & CCTV Surveillance" },
     ],
