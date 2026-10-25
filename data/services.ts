@@ -26,7 +26,7 @@ export const servicesData: ServiceItem[] = [
     category: "Development",
     badge: "Enterprise Engineering",
     iconName: "Code2",
-    accentColor: "from-blue-600 to-indigo-600",
+    accentColor: "from-[#224C75] to-[#1a3a5a]",
     capabilities: [
       "Full-cycle web application architecture and modern UI/UX engineering",
       "Enterprise Resource Planning (ERP) customization and integration",
@@ -47,7 +47,7 @@ export const servicesData: ServiceItem[] = [
       "Large Commercial Enterprises",
       "Government Agencies",
     ],
-    metrics: { label: "Deployment Success", value: "100%" },
+    metrics: { label: "Deployment Standard", value: "Turnkey Execution" },
   },
   {
     id: "infrastructure-support",
@@ -60,7 +60,7 @@ export const servicesData: ServiceItem[] = [
     category: "Infrastructure",
     badge: "Mission-Critical",
     iconName: "Server",
-    accentColor: "from-cyan-600 to-blue-600",
+    accentColor: "from-slate-700 to-[#224C75]",
     capabilities: [
       "Enterprise server sales, configuration, virtualization, and deployment",
       "Structured local area network (LAN/WAN) cabling and fiber termination",
@@ -71,7 +71,7 @@ export const servicesData: ServiceItem[] = [
     deliverables: [
       "High-Availability Server Clusters",
       "Certified Structured Cabling Infrastructure",
-      "24/7 Service Level Agreement (SLA) Coverage",
+      "Structured Maintenance & Rapid Incident Response",
       "Disaster Recovery & Redundant Power Plans",
       "Comprehensive Network Topology Blueprints",
     ],
@@ -81,7 +81,7 @@ export const servicesData: ServiceItem[] = [
       "Manufacturing & Logistics",
       "CBT Examination Venues",
     ],
-    metrics: { label: "Uptime Target", value: "99.9%" },
+    metrics: { label: "Availability Focus", value: "High Availability" },
   },
   {
     id: "security-cybersecurity",
@@ -134,7 +134,7 @@ export const servicesData: ServiceItem[] = [
       "Data Analytics, PowerBI, Python, and business intelligence mastery",
       "Computer hardware engineering, network administration, and troubleshooting",
       "Custom corporate IT training tailored to organizational transformation",
-      "Youth and school-age coding bootcamps (Gentle Coder, Kids Tech summer camps)",
+      "Professional Developer Fellowships and Graduate Tech Internships (visit fellow.dervac.com)",
     ],
     deliverables: [
       "Certified Professional Training Diplomas",
@@ -146,10 +146,10 @@ export const servicesData: ServiceItem[] = [
     targetSectors: [
       "Corporate Enterprises Upskilling Staff",
       "Aspiring Software Engineers & Tech Career Switchers",
-      "Government Youth Empowerment Initiatives",
-      "Schools & Summer Learning Camps",
+      "Institutional Technology Fellowships",
+      "Tertiary Graduates & Engineering Interns",
     ],
-    metrics: { label: "Alumni Graduated", value: "15,000+" },
+    metrics: { label: "Academy Focus", value: "Career-Ready" },
   },
   {
     id: "educational-technology",
@@ -183,7 +183,7 @@ export const servicesData: ServiceItem[] = [
       "Secondary & High Schools",
       "Professional Certification Councils",
     ],
-    metrics: { label: "Exam Seats Powered", value: "50,000+" },
+    metrics: { label: "Centre Scale", value: "High Capacity" },
   },
   {
     id: "coworking-hub",
@@ -194,7 +194,7 @@ export const servicesData: ServiceItem[] = [
     fullDescription:
       "The Dervac ICT Hub located on Shipeolu Street, Palmgrove, provides a vibrant physical environment for tech startups, remote engineers, and creative teams. Equipped with uninterrupted power, high-speed fiber, meeting halls, and an active community.",
     category: "Coworking",
-    badge: "Innovation Ecosystem",
+    badge: "Facility & Community",
     iconName: "Building2",
     accentColor: "from-purple-600 to-pink-600",
     capabilities: [
@@ -208,7 +208,7 @@ export const servicesData: ServiceItem[] = [
       "Daily, Weekly & Monthly Membership Plans",
       "Conference & Presentation Facilities with Smart Displays",
       "High-Speed Wi-Fi & Wired Gig-Ethernet Drops",
-      "Kitchenette, Coffee Station & Community Lounge",
+      "Professional Co-working Amenities & Community Access",
       "Postal Address & Mail Handling for Registered Hub Members",
     ],
     targetSectors: [
@@ -217,6 +217,6 @@ export const servicesData: ServiceItem[] = [
       "Corporate Project Teams on Sprint Deployments",
       "Tech Community Organizers & Event Hosts",
     ],
-    metrics: { label: "Power Redundancy", value: "24/7" },
+    metrics: { label: "Power Redundancy", value: "Generator + Solar" },
   },
 ];

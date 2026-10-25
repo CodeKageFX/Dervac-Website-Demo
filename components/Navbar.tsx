@@ -4,215 +4,172 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
-import { navigationLinks } from "@/data/navigation";
+import { Menu, X } from "lucide-react";
 import { ConsultationModal } from "./ConsultationModal";
 
 export function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [consultationOpen, setConsultationOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Close dropdown on route change
-  useEffect(() => {
-    setActiveDropdown(null);
+  // Close mobile menu when pathname changes
+  const [prevPath, setPrevPath] = useState(pathname);
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
     setMobileMenuOpen(false);
-  }, [pathname]);
+  }
+
+  // Prevent background scrolling when mobile menu overlay is active
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  const navLinks = [
+    { label: "Services", href: "/services" },
+    { label: "Products", href: "/products" },
+    { label: "About Us", href: "/profile" },
+    { label: "Support", href: "/support" },
+  ];
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 py-3 sm:py-4 px-4 sm:px-6 lg:px-8 ${
-          scrolled ? "backdrop-blur-xl bg-[#08090d]/85 shadow-2xl shadow-black/60 border-b border-white/[0.06]" : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-[#0e2b61] p-0.5 shadow-md shadow-blue-900/30 group-hover:scale-105 transition-transform">
+      <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-colors">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          {/* Brand Logo & Wordmark */}
+          <Link href="/" className="flex items-center group">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden flex items-center justify-center p-0.5">
               <Image
                 src="/dervac_logo.png"
                 alt="Dervac Global Services"
                 width={40}
                 height={40}
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-contain"
                 priority
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white flex items-center gap-1.5">
-                DERVAC
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block" />
-              </span>
-              <span className="text-[10px] tracking-wider text-zinc-400 uppercase font-medium">
-                Global Services Ltd
-              </span>
-            </div>
+            <span className="font-bimini text-4xl font-extrabold tracking-tight text-[#224C75] leading-none lowercase transition-opacity group-hover:opacity-90">
+              dervac
+            </span>
           </Link>
 
-          {/* Desktop Floating Pill Navbar (Matching Dribbble Reference) */}
-          <nav className="hidden lg:flex items-center gap-1 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md shadow-lg shadow-black/30">
-            {navigationLinks.map((item) => {
-              const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
-              const hasDropdown = Boolean(item.children && item.children.length > 0);
-
-              if (!hasDropdown) {
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
-                      isActive
-                        ? "bg-white/10 text-white shadow-sm"
-                        : "text-zinc-300 hover:text-white hover:bg-white/[0.06]"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
-
+          {/* Simple Navigation Links Across the Center */}
+          <nav className="hidden md:flex items-center gap-8 text-[13px] font-medium text-gray-600">
+            {navLinks.map((item) => {
+              const isActive = pathname === item.href;
               return (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => setActiveDropdown(item.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`transition-colors hover:text-gray-900 ${
+                    isActive ? "text-gray-950 font-semibold" : ""
+                  }`}
                 >
-                  <Link
-                    href={item.href}
-                    className={`flex items-center gap-1 px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
-                      isActive
-                        ? "bg-white/10 text-white"
-                        : "text-zinc-300 hover:text-white hover:bg-white/[0.06]"
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    {item.badge && (
-                      <span className="px-1.5 py-0.2 rounded-full text-[10px] font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30">
-                        {item.badge}
-                      </span>
-                    )}
-                    <ChevronDown className="w-3.5 h-3.5 opacity-70 transition-transform group-hover:rotate-180" />
-                  </Link>
-
-                  {/* Dropdown Menu */}
-                  {activeDropdown === item.label && item.children && (
-                    <div className="absolute top-full left-0 pt-2 w-72 z-50">
-                      <div className="bg-[#0f1119]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-2xl shadow-black/80 space-y-1 animate-in fade-in zoom-in-95 duration-150">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="block p-2.5 rounded-xl hover:bg-white/[0.06] transition-colors group/item"
-                          >
-                            <div className="text-sm font-medium text-white group-hover/item:text-blue-400 transition-colors flex items-center justify-between">
-                              {child.label}
-                              <ArrowRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-blue-400" />
-                            </div>
-                            <p className="text-xs text-zinc-400 line-clamp-1 mt-0.5">
-                              {child.description}
-                            </p>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  {item.label}
+                </Link>
               );
             })}
           </nav>
 
-          {/* Right Header Action: Get Started / Consultation */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Right Action: Contact Link + Demo Button (Matching Reference Right Side) */}
+          <div className="hidden sm:flex items-center gap-5">
+            <Link
+              href="/contact"
+              className="text-[13px] font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Contact
+            </Link>
             <button
               onClick={() => setConsultationOpen(true)}
-              className="hero-gradient-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white text-sm font-semibold cursor-pointer shadow-lg transition-transform active:scale-95"
+              className="px-4 py-2 rounded-lg border border-[#224C75]/20 text-xs sm:text-[13px] font-semibold text-[#224C75] bg-white hover:bg-[#224C75]/5 transition-all shadow-xs cursor-pointer"
             >
-              <span>Get Started</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              Request Demo
             </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex sm:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setConsultationOpen(true)}
-              className="hero-gradient-btn px-3 py-1.5 rounded-full text-white text-xs font-semibold"
+              className="px-3 py-1.5 rounded-lg bg-[#224C75] text-white text-xs font-medium"
             >
-              Start
+              Demo
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-white/[0.05] border border-white/10 text-zinc-300 hover:text-white"
+              className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50 cursor-pointer"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Navigation Sheet */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 pt-3 pb-6 px-4 bg-[#0d0f17] border border-white/10 rounded-2xl shadow-2xl backdrop-blur-2xl max-h-[80vh] overflow-y-auto space-y-3">
-            {navigationLinks.map((item) => (
-              <div key={item.label} className="border-b border-white/5 pb-2">
+      {/* Mobile Navigation Drawer & Functional Dark Page Overlay (Rendered outside header to guarantee full-page fixed overlay) */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden flex flex-col pointer-events-auto">
+          {/* Functional Dark Page Overlay - Clicking this dismisses the mobile nav */}
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity duration-200 cursor-pointer"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close mobile menu"
+          />
+
+          {/* Floating Dropdown: position directly underneath the 64px header */}
+          <div
+            className="relative z-50 mt-16 bg-white border-b border-gray-200 shadow-2xl px-4 pt-3 pb-6 space-y-1 animate-in slide-in-from-top-2 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {navLinks.map((item) => {
+              const isActive = pathname === item.href;
+              return (
                 <Link
+                  key={item.href}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-2 text-base font-semibold text-white"
+                  className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                    isActive
+                      ? "bg-gray-100 text-gray-950 font-semibold"
+                      : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  }`}
                 >
-                  <span>{item.label}</span>
-                  {item.badge && (
-                    <span className="px-2 py-0.5 rounded-full text-[10px] bg-blue-500/20 text-blue-300">
-                      {item.badge}
-                    </span>
-                  )}
+                  {item.label}
                 </Link>
-
-                {item.children && (
-                  <div className="pl-3 space-y-1.5 mt-1 border-l border-white/10">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1 text-sm text-zinc-400 hover:text-white"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-
-            <div className="pt-2">
+              );
+            })}
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                pathname === "/contact"
+                  ? "bg-gray-100 text-gray-950 font-semibold"
+                : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              }`}
+            >
+              Contact
+            </Link>
+            <div className="pt-3">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   setConsultationOpen(true);
                 }}
-                className="w-full hero-gradient-btn py-3 rounded-xl text-center text-white font-medium text-sm flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-lg bg-[#224C75] hover:bg-[#1a3a5a] text-white text-center font-medium text-sm shadow-xs transition-colors cursor-pointer"
               >
-                Request Enterprise Consultation
+                Request Enterprise Demo
               </button>
             </div>
           </div>
-        )}
-      </header>
+        </div>
+      )}
 
-      {/* Consultation Modal */}
       <ConsultationModal
         isOpen={consultationOpen}
         onClose={() => setConsultationOpen(false)}

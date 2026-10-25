@@ -98,7 +98,7 @@ export function ServicesGrid() {
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#6ba4d9] transition-colors">
                     {service.title}
                   </h3>
 
@@ -110,7 +110,7 @@ export function ServicesGrid() {
                   <div className="space-y-2 mb-6 pt-4 border-t border-white/5">
                     {service.capabilities.slice(0, 3).map((cap, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-zinc-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 flex-shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#6ba4d9] flex-shrink-0 mt-0.5" />
                         <span>{cap}</span>
                       </div>
                     ))}
@@ -126,7 +126,7 @@ export function ServicesGrid() {
 
                   <Link
                     href={`/services#${service.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 group-hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#6ba4d9] group-hover:text-white transition-colors"
                   >
                     <span>Deep Dive</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

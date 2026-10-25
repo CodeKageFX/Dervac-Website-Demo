@@ -28,11 +28,11 @@ export interface CompanyDetails {
     generalPhone: string;
     hubPhone: string;
     supportPhone: string;
-    tollFreePhone: string;
     whatsapp: string;
     generalEmail: string;
     hubEmail: string;
     careersEmail: string;
+    privacyEmail: string;
   };
   socialLinks: {
     facebook: string;
@@ -71,22 +71,22 @@ export const companyData: CompanyDetails = {
     {
       value: "20+",
       label: "Years in Industry",
-      description: "Two decades of reliable ICT delivery across Nigeria & Africa",
+      description: "Two decades of reliable ICT delivery across Nigeria & West Africa",
     },
     {
-      value: "100+",
+      value: "Turnkey",
       label: "Enterprise Deployments",
-      description: "Complex software, server infrastructure, and network rollouts",
+      description: "Enterprise software, server infrastructure, and network rollouts",
     },
     {
-      value: "15,000+",
-      label: "Trained Professionals",
-      description: "Graduates empowered through Dervac Academy & tech fellowships",
+      value: "Thousands",
+      label: "Trained Fellows",
+      description: "Professionals empowered through Dervac Academy & tech fellowships",
     },
     {
-      value: "99.9%",
-      label: "Reliability Focus",
-      description: "Mission-critical uptime support and structured SLA compliance",
+      value: "Proactive",
+      label: "Support Methodology",
+      description: "Structured maintenance agreements and rapid field dispatch",
     },
   ],
   locations: [
@@ -115,16 +115,16 @@ export const companyData: CompanyDetails = {
     generalPhone: "+234 816 022 5365",
     hubPhone: "+234 811 386 9322",
     supportPhone: "+234 909 379 0787",
-    tollFreePhone: "09016461891",
-    whatsapp: "+2348026944449",
+    whatsapp: "2348026944449",
     generalEmail: "info@dervac.com",
     hubEmail: "hub@dervac.com",
     careersEmail: "careers@dervac.com",
+    privacyEmail: "privacy@dervac.com",
   },
   socialLinks: {
     facebook: "https://www.facebook.com/dervac",
     linkedin: "https://www.linkedin.com/company/dervac-global/",
-    whatsapp: "https://wa.me/+2348026944449",
+    whatsapp: "https://wa.me/2348026944449",
   },
   values: [
     {

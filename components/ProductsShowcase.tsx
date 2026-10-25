@@ -25,7 +25,7 @@ export function ProductsShowcase() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[11px] font-semibold text-blue-400 uppercase tracking-wider mb-2.5">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#224C75]/20 border border-[#224C75]/40 text-[11px] font-semibold text-[#6ba4d9] uppercase tracking-wider mb-2.5">
               Proprietary Solutions & Spaces
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
@@ -38,7 +38,7 @@ export function ProductsShowcase() {
 
           <Link
             href="/products"
-            className="secondary-pill-btn inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-white hover:text-blue-300 self-start md:self-auto"
+            className="secondary-pill-btn inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-white hover:text-[#6ba4d9] self-start md:self-auto"
           >
             <span>View All Products</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -57,12 +57,12 @@ export function ProductsShowcase() {
                 onClick={() => setSelectedProductIndex(idx)}
                 className={`p-4 rounded-xl text-left border transition-all ${
                   isSelected
-                    ? "bg-white/10 border-blue-500 shadow-lg shadow-blue-500/15"
+                    ? "bg-white/10 border-[#224C75] shadow-lg shadow-[#224C75]/25"
                     : "bg-white/[0.02] border-white/5 hover:bg-white/[0.05]"
                 }`}
               >
                 <TabIcon
-                  className={`w-5 h-5 mb-2 ${isSelected ? "text-blue-400" : "text-zinc-500"}`}
+                  className={`w-5 h-5 mb-2 ${isSelected ? "text-[#6ba4d9]" : "text-zinc-500"}`}
                 />
                 <div className={`text-sm font-bold truncate ${isSelected ? "text-white" : "text-zinc-300"}`}>
                   {prod.name}
@@ -80,7 +80,7 @@ export function ProductsShowcase() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-semibold">
+                <span className="px-3 py-1 rounded-full bg-[#224C75]/30 text-[#6ba4d9] border border-[#224C75]/50 text-xs font-semibold">
                   {activeProduct.badge}
                 </span>
                 <span className="text-xs text-zinc-400 font-mono">

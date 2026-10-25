@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Landmark, Radio, HeartPulse, GraduationCap, Building, ShieldCheck } from "lucide-react";
-import { companyData } from "@/data/company";
 
 export function EcosystemBar() {
   const ecosystemSectors = [
@@ -29,7 +28,7 @@ export function EcosystemBar() {
                 key={sector.name}
                 className="group flex flex-col items-center justify-center p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:border-white/20 hover:bg-white/[0.05] transition-all"
               >
-                <Icon className="w-5 h-5 text-zinc-400 group-hover:text-blue-400 transition-colors mb-2" />
+                <Icon className="w-5 h-5 text-zinc-400 group-hover:text-[#224C75] transition-colors mb-2" />
                 <span className="text-xs font-semibold text-zinc-300 text-center leading-tight">
                   {sector.name}
                 </span>

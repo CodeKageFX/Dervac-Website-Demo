@@ -142,7 +142,7 @@ export function HeroPreviewModal({ isOpen, onClose }: HeroPreviewModalProps) {
                 </div>
 
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10 space-y-2">
-                  <div className="flex items-center gap-2 text-cyan-400 text-xs font-semibold">
+                  <div className="flex items-center gap-2 text-[#4a8ec9] text-xs font-semibold">
                     <Activity className="w-4 h-4" />
                     <span>Real-time Portals</span>
                   </div>

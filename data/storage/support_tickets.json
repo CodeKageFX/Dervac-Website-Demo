@@ -1,0 +1,16 @@
+[
+  {
+    "ticketNumber": "DRV-SUP-20261017-5079",
+    "organization": "Apex Health Diagnostics",
+    "contactName": "Dr. Funke Adeyemi",
+    "email": "fadeyemi@apexhealth.ng",
+    "phone": "+2348031112233",
+    "priority": "Priority 2 (High)",
+    "orgSize": "26–100 Workstations / Users",
+    "ticketSubject": "Medisure database report latency",
+    "issueDetails": "Daily lab sync is stalling intermittently after 14:00.",
+    "ipMasked": "::1::****",
+    "createdAt": "2026-10-17T12:50:41.321Z",
+    "status": "Logged"
+  }
+]
