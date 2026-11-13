@@ -12,7 +12,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
-import { servicesData, ServiceItem } from "@/data/services";
+import { servicesData } from "@/data/services";
 
 export function ServicesGrid() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");

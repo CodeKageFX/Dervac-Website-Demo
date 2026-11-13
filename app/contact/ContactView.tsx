@@ -25,7 +25,7 @@ export function ContactView() {
   const [inquiryType, setInquiryType] = useState("Enterprise ICT Solutions");
   const [targetFacility, setTargetFacility] = useState("Dervac ICT Hub (Palmgrove)");
   const [message, setMessage] = useState("");
-  
+
   // Honeypot & timing spam protection
   const [honeypot, setHoneypot] = useState("");
   const renderTimeRef = useRef<number>(0);
@@ -156,60 +156,60 @@ export function ContactView() {
         breadcrumbs={[{ label: "Contact Us" }]}
       />
 
-      <section className="py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Physical Office Locations Grid */}
-        <div className="mb-14">
-          <div className="mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#224C75]">
-              Physical Locations
+        <div className="mb-16">
+          <div className="mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0E2B61]">
+              Physical Locations & Operating Facilities
             </span>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mt-1">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 mt-1">
               Visit Our Facilities in Lagos
             </h2>
-            <p className="text-xs sm:text-sm text-gray-600 mt-1">
+            <p className="text-base text-slate-600 mt-2">
               Dual operating centers supporting client discovery, technical training, and corporate management.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {companyData.locations.map((loc) => (
               <div
                 key={loc.title}
-                className="p-6 sm:p-7 rounded-2xl bg-[#F9FAFB] border border-gray-200/80 flex flex-col justify-between"
+                className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-2xs flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-semibold text-[#224C75] bg-[#224C75]/10 px-2.5 py-1 rounded-full border border-[#224C75]/20">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-bold text-[#0E2B61] bg-[#0E2B61]/10 px-3.5 py-1 rounded-full border border-[#0E2B61]/20">
                       {loc.badge}
                     </span>
-                    <span className="text-xs text-gray-500 font-mono">
+                    <span className="text-xs font-semibold text-slate-500">
                       {loc.type}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <h3 className="text-2xl font-bold text-slate-950 mb-4">
                     {loc.title}
                   </h3>
 
-                  <div className="space-y-3 text-xs sm:text-sm text-gray-600 mb-6">
-                    <div className="flex items-start gap-2.5">
-                      <MapPin className="w-4 h-4 text-[#224C75] mt-0.5 flex-shrink-0" />
+                  <div className="space-y-4 text-sm text-slate-600 mb-8">
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-4.5 h-4.5 text-[#0E2B61] mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-gray-900">{loc.address}</p>
-                        <p className="text-xs text-gray-500 mt-0.5">
+                        <p className="font-semibold text-slate-900">{loc.address}</p>
+                        <p className="text-xs text-slate-500 mt-0.5">
                           {loc.city}, {loc.country}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-2.5 pt-1">
-                      <Phone className="w-4 h-4 text-[#224C75] mt-0.5 flex-shrink-0" />
+                    <div className="flex items-start gap-3 pt-1">
+                      <Phone className="w-4.5 h-4.5 text-[#0E2B61] mt-0.5 flex-shrink-0" />
                       <div>
                         {loc.phones.map((p) => (
                           <a
                             key={p}
-                            href={`tel:${p}`}
-                            className="block font-medium text-gray-900 hover:text-[#224C75] transition-colors"
+                            href={`tel:${p.replace(/\s+/g, "")}`}
+                            className="block font-bold text-slate-900 hover:text-[#0E2B61] transition-colors"
                           >
                             {p}
                           </a>
@@ -217,11 +217,11 @@ export function ContactView() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2.5">
-                      <Mail className="w-4 h-4 text-[#224C75] flex-shrink-0" />
+                    <div className="flex items-center gap-3">
+                      <Mail className="w-4.5 h-4.5 text-[#0E2B61] flex-shrink-0" />
                       <a
                         href={`mailto:${loc.email}`}
-                        className="text-gray-700 hover:text-[#224C75] transition-colors"
+                        className="text-slate-700 hover:text-[#0E2B61] font-semibold transition-colors"
                       >
                         {loc.email}
                       </a>
@@ -229,17 +229,17 @@ export function ContactView() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-gray-200/60 flex items-center justify-between text-xs text-gray-500">
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-gray-400" />
-                    <span>Mon – Fri: 8:00 AM – 6:00 PM</span>
+                <div className="pt-6 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-slate-400" />
+                    <span>Mon–Fri: 8:00 AM – 6:00 PM</span>
                   </div>
                   <a
-                    href={`tel:${loc.phones[0]}`}
-                    className="font-semibold text-[#224C75] hover:text-[#1a3a5a] inline-flex items-center gap-1"
+                    href={`tel:${loc.phones[0].replace(/\s+/g, "")}`}
+                    className="font-bold text-[#0E2B61] hover:text-[#2563EB] inline-flex items-center gap-1.5"
                   >
-                    <span>Call desk</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <span>Call Facility</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
@@ -248,54 +248,54 @@ export function ContactView() {
         </div>
 
         {/* Direct Contact & Inquiry Form */}
-        <div className="rounded-3xl border border-gray-200/90 bg-[#F9FAFB] p-6 sm:p-10 shadow-2xs">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div className="rounded-3xl border border-slate-200/90 bg-slate-50 p-8 sm:p-12 shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Info Column */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-8">
               <div>
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#224C75]">
-                  Direct Inquiries
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0E2B61]">
+                  Direct Inquiries & Scoping
                 </span>
-                <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mt-1">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 mt-1">
                   Start an Engagement
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
                   Submit your project requirements below. Inquiries are securely logged to our enterprise records desk with an official reference number for tracking.
                 </p>
               </div>
 
               {/* Verified Contact Details Box */}
-              <div className="p-5 rounded-2xl bg-white border border-gray-200/80 space-y-3 text-xs sm:text-sm">
-                <div className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
-                  Verified Inboxes & Lines
+              <div className="p-7 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-4 text-sm">
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  Verified Contact Hotlines
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div>
-                    <span className="text-gray-500 text-xs block">General Corporate Desk</span>
+                    <span className="text-slate-400 text-xs block font-medium">General Corporate Desk</span>
                     <a
                       href={`mailto:${companyData.contacts.generalEmail}`}
-                      className="font-medium text-gray-900 hover:text-[#224C75] transition-colors"
+                      className="font-bold text-slate-900 hover:text-[#0E2B61] transition-colors"
                     >
                       {companyData.contacts.generalEmail}
                     </a>
                   </div>
 
                   <div>
-                    <span className="text-gray-500 text-xs block">Palmgrove Hub & Coworking</span>
+                    <span className="text-slate-400 text-xs block font-medium">Palmgrove Hub & Coworking</span>
                     <a
                       href={`mailto:${companyData.contacts.hubEmail}`}
-                      className="font-medium text-gray-900 hover:text-[#224C75] transition-colors"
+                      className="font-bold text-slate-900 hover:text-[#0E2B61] transition-colors"
                     >
                       {companyData.contacts.hubEmail}
                     </a>
                   </div>
 
                   <div>
-                    <span className="text-gray-500 text-xs block">Technical Assistance Hotline</span>
+                    <span className="text-slate-400 text-xs block font-medium">Technical Support Hotline</span>
                     <a
-                      href={`tel:${companyData.contacts.generalPhone}`}
-                      className="font-medium text-gray-900 hover:text-[#224C75] transition-colors"
+                      href={`tel:${companyData.contacts.generalPhone.replace(/\s+/g, "")}`}
+                      className="font-bold text-[#0E2B61] hover:text-[#2563EB] transition-colors"
                     >
                       {companyData.contacts.generalPhone}
                     </a>
@@ -304,10 +304,10 @@ export function ContactView() {
               </div>
 
               {/* WhatsApp Quick Note */}
-              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200/70 text-xs text-emerald-800 flex items-start gap-2.5">
-                <MessageSquare className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-900 flex items-start gap-3">
+                <MessageSquare className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                 <span>
-                  Immediate WhatsApp communication is monitored during active business hours for rapid consultation routing.
+                  Immediate WhatsApp communication is monitored during active business hours for rapid technical consultation routing.
                 </span>
               </div>
             </div>
@@ -315,45 +315,45 @@ export function ContactView() {
             {/* Right Form Column */}
             <div className="lg:col-span-7">
               {status === "success" ? (
-                <div className="bg-white p-7 sm:p-9 rounded-2xl border border-emerald-200 shadow-sm space-y-5">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6" />
+                <div className="bg-white p-8 sm:p-10 rounded-3xl border border-emerald-200 shadow-sm space-y-6">
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                    <CheckCircle2 className="w-7 h-7" />
                   </div>
                   <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700">
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                       Inquiry Logged Successfully
                     </span>
-                    <h4 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
+                    <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-950 mt-1">
                       Thank You for Contacting Dervac
                     </h4>
-                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                    <p className="text-base text-slate-600 mt-2 leading-relaxed">
                       Your inquiry has been stored securely in our enterprise CRM. A solution architect will review your requirements and follow up within one business day.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs space-y-1.5">
-                    <div className="flex justify-between items-center text-gray-600">
+                  <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-sm space-y-2">
+                    <div className="flex justify-between items-center text-slate-600">
                       <span>Tracking Reference:</span>
-                      <span className="font-mono font-bold text-gray-900 text-sm">
+                      <span className="font-mono font-bold text-slate-900 text-base">
                         {submissionReference}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center text-gray-600">
+                    <div className="flex justify-between items-center text-slate-600">
                       <span>Category:</span>
-                      <span className="font-medium text-gray-800">{inquiryType}</span>
+                      <span className="font-semibold text-slate-800">{inquiryType}</span>
                     </div>
-                    <div className="flex justify-between items-center text-gray-600">
+                    <div className="flex justify-between items-center text-slate-600">
                       <span>Designated Office:</span>
-                      <span className="font-medium text-gray-800">{targetFacility}</span>
+                      <span className="font-semibold text-slate-800">{targetFacility}</span>
                     </div>
                   </div>
 
-                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                     <a
                       href={whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-2"
+                      className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-xs transition-colors flex items-center justify-center gap-2"
                     >
                       <MessageSquare className="w-4 h-4" />
                       <span>Chat on WhatsApp With Reference</span>
@@ -362,9 +362,9 @@ export function ContactView() {
                     <button
                       type="button"
                       onClick={resetForm}
-                      className="px-4 py-2.5 rounded-xl border border-gray-300 hover:bg-gray-50 text-gray-700 text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="px-5 py-3.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <RefreshCw className="w-3.5 h-3.5 text-gray-500" />
+                      <RefreshCw className="w-4 h-4 text-slate-500" />
                       <span>Submit Another Inquiry</span>
                     </button>
                   </div>
@@ -372,7 +372,7 @@ export function ContactView() {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="space-y-5 bg-white p-6 sm:p-7 rounded-2xl border border-gray-200/80"
+                  className="space-y-6 bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/90 shadow-2xs"
                 >
                   {/* Honeypot hidden input */}
                   <div className="hidden" aria-hidden="true">
@@ -390,19 +390,19 @@ export function ContactView() {
 
                   {/* Error Notification */}
                   {errorMessage && (
-                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2.5">
-                      <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                    <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700 flex items-start gap-3">
+                      <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                       <div>
-                        <strong className="font-semibold">Submission Error:</strong>{" "}
+                        <strong className="font-bold">Submission Error:</strong>{" "}
                         {errorMessage}
                       </div>
                     </div>
                   )}
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {/* Name */}
                     <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                         Full Name *
                       </label>
                       <input
@@ -412,13 +412,13 @@ export function ContactView() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="e.g. Adebayo Ogunlesi"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                       />
                     </div>
 
                     {/* Organization */}
                     <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                         Company / Organization
                       </label>
                       <input
@@ -427,13 +427,13 @@ export function ContactView() {
                         value={organization}
                         onChange={(e) => setOrganization(e.target.value)}
                         placeholder="e.g. Apex Health Clinic"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                       />
                     </div>
 
                     {/* Email */}
                     <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                         Email Address *
                       </label>
                       <input
@@ -443,13 +443,13 @@ export function ContactView() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="adebayo@example.com"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                       />
                     </div>
 
                     {/* Phone */}
                     <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -459,20 +459,20 @@ export function ContactView() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+234 800 000 0000"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                       />
                     </div>
 
                     {/* Category */}
                     <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                         Inquiry Category
                       </label>
                       <select
                         disabled={status === "submitting"}
                         value={inquiryType}
                         onChange={(e) => setInquiryType(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75]"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61]"
                       >
                         <option value="Enterprise ICT Solutions">Enterprise ICT Solutions</option>
                         <option value="Software Development & Integration">Software Development & Integration</option>
@@ -485,14 +485,14 @@ export function ContactView() {
 
                     {/* Facility */}
                     <div>
-                      <label className="block text-xs font-semibold text-gray-700 mb-1">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                         Preferred Office
                       </label>
                       <select
                         disabled={status === "submitting"}
                         value={targetFacility}
                         onChange={(e) => setTargetFacility(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75]"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61]"
                       >
                         <option value="Dervac ICT Hub (Palmgrove)">Dervac ICT Hub (Palmgrove)</option>
                         <option value="Corporate HQ (Ikeja)">Corporate HQ (Opebi, Ikeja)</option>
@@ -502,7 +502,7 @@ export function ContactView() {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                       Your Requirements / Message *
                     </label>
                     <textarea
@@ -512,24 +512,24 @@ export function ContactView() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Briefly describe your project scope, timeline, or inquiries (min 10 characters)..."
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                     />
                   </div>
 
-                  <p className="text-[11px] text-gray-500">
+                  <p className="text-xs text-slate-500">
                     By submitting this form, you acknowledge that your information is processed in accordance with our{" "}
-                    <a href="/privacy" className="underline text-[#224C75] hover:text-[#1a3a5a]">
+                    <a href="/privacy" className="underline text-[#0E2B61] hover:text-[#2563EB] font-semibold">
                       Privacy Policy
                     </a>{" "}
                     under the Nigeria Data Protection Act 2023.
                   </p>
 
                   {/* Transmission Buttons */}
-                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                     <button
                       type="submit"
                       disabled={status === "submitting"}
-                      className="px-6 py-2.5 rounded-xl bg-[#224C75] hover:bg-[#1a3a5a] text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                      className="px-7 py-3.5 rounded-xl bg-[#0E2B61] hover:bg-[#07132B] text-white text-sm font-bold shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                     >
                       {status === "submitting" ? (
                         <>
@@ -546,9 +546,9 @@ export function ContactView() {
 
                     <a
                       href={mailtoUrl}
-                      className="px-5 py-2.5 rounded-xl bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                      className="px-6 py-3.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                     >
-                      <Mail className="w-3.5 h-3.5 text-[#224C75]" />
+                      <Mail className="w-4 h-4 text-[#0E2B61]" />
                       <span>Prepare Direct Email</span>
                     </a>
                   </div>

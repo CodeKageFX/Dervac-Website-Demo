@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Headphones,
-  PhoneCall,
   Send,
   MessageSquare,
   FileCheck,
@@ -12,6 +11,7 @@ import {
   Loader2,
   RefreshCw,
   Mail,
+  Phone,
 } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { companyData } from "@/data/company";
@@ -171,12 +171,15 @@ export function SupportView() {
       level: "Priority 3 (Standard)",
       title: "Configuration & Routine Inquiries",
       badge: "Standard Maintenance",
-      badgeClass: "bg-[#224C75]/10 text-[#224C75] border-[#224C75]/20",
+      badgeClass: "bg-[#0E2B61]/10 text-[#0E2B61] border-[#0E2B61]/20",
       description:
         "Routine software configuration adjustments, user account provisioning, minor non-blocking bug reports, or scheduled equipment servicing.",
       criteria: "General maintenance with zero disruption to active business transactions.",
     },
   ];
+
+  const primaryPhone = companyData.contacts.generalPhone;
+  const supportPhone = companyData.contacts.supportPhone;
 
   return (
     <main className="min-h-screen bg-white">
@@ -188,73 +191,73 @@ export function SupportView() {
         breadcrumbs={[{ label: "Support & Priorities" }]}
       />
 
-      {/* Direct Phone Assistance Bar */}
-      <section className="bg-[#F9FAFB] border-b border-gray-200/80 py-4">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#224C75]/10 border border-[#224C75]/20 text-[#224C75] flex items-center justify-center">
-              <Headphones className="w-4 h-4" />
+      {/* Prominent Direct Phone Assistance Bar */}
+      <section className="bg-slate-50 border-b border-slate-200/90 py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-[#0E2B61] text-white flex items-center justify-center shadow-xs">
+              <Headphones className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-xs font-semibold text-gray-900 block">
+              <span className="text-sm font-bold text-slate-950 block">
                 Direct Engineering Support Hotlines
               </span>
-              <span className="text-[11px] text-gray-500">
-                Lagos NOC & Field Engineering Dispatch
+              <span className="text-xs text-slate-500">
+                Lagos NOC & Field Engineering Dispatch • Active 24/7 for SLAs
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 text-xs font-medium">
+          <div className="flex items-center gap-4 text-sm font-bold flex-wrap justify-center">
             <a
-              href={`tel:${companyData.contacts.generalPhone}`}
-              className="text-gray-700 hover:text-[#224C75] flex items-center gap-1.5"
+              href={`tel:${primaryPhone.replace(/\s+/g, "")}`}
+              className="text-slate-800 hover:text-[#0E2B61] flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-2xs transition-colors"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#224C75]" />
-              <span>{companyData.contacts.generalPhone}</span>
+              <Phone className="w-4 h-4 text-[#0E2B61]" />
+              <span>{primaryPhone}</span>
             </a>
-            <span className="text-gray-300">|</span>
+            <span className="text-slate-300 hidden sm:inline">|</span>
             <a
-              href={`tel:${companyData.contacts.supportPhone}`}
-              className="text-gray-700 hover:text-[#224C75] flex items-center gap-1.5"
+              href={`tel:${supportPhone.replace(/\s+/g, "")}`}
+              className="text-slate-800 hover:text-[#0E2B61] flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 shadow-2xs transition-colors"
             >
-              <PhoneCall className="w-3.5 h-3.5 text-[#224C75]" />
-              <span>{companyData.contacts.supportPhone}</span>
+              <Phone className="w-4 h-4 text-[#0E2B61]" />
+              <span>{supportPhone}</span>
             </a>
           </div>
         </div>
       </section>
 
       {/* Main Content Area */}
-      <section className="py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Who the Support Offering is For & Paid Notice */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-16">
             <div className="lg:col-span-7 space-y-4">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#224C75]">
-                Service Overview
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 leading-tight">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E2B61]/10 text-[#0E2B61] text-xs font-bold uppercase tracking-wider">
+                Support Framework
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 leading-tight">
                 Dependable IT Care for Demanding Organizations
               </h2>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                 Dervac&apos;s support services are designed for commercial enterprises, healthcare centers, educational institutions, and financial facilities that rely on uninterrupted server uptime, secure local networks, and dependable software availability.
               </p>
-              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
                 Rather than treating IT maintenance as an afterthought, our certified field engineers and systems integrators operate structured service level agreements to preempt hardware failure, conduct regular health checks, and maintain emergency spares.
               </p>
             </div>
 
             <div className="lg:col-span-5">
-              <div className="p-6 rounded-2xl bg-[#F8FAFC] border border-gray-200/90 space-y-3">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-700">
-                  <FileCheck className="w-4 h-4 text-[#224C75]" />
-                  <span>Paid Enterprise Service Notice</span>
+              <div className="p-7 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-2xs space-y-4">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-700">
+                  <FileCheck className="w-4 h-4 text-[#0E2B61]" />
+                  <span>Enterprise SLA Engagement Notice</span>
                 </div>
-                <p className="text-xs text-gray-600 leading-relaxed">
-                  Support and field technician dispatches are provided as a paid professional service under structured annual maintenance contracts (AMCs) or retainer agreements. Uncontracted emergency dispatches are subject to technical triage and initial assessment fees.
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Support and field technician dispatches are provided as a professional service under structured annual maintenance contracts (AMCs) or retainer agreements. Uncontracted emergency dispatches are subject to technical triage and initial assessment fees.
                 </p>
-                <div className="pt-2 text-[11px] text-gray-500 border-t border-gray-200/60">
+                <div className="pt-3 text-xs text-slate-500 border-t border-slate-200">
                   Custom SLA parameters and dedicated on-site technician options are finalized during contract engagement.
                 </div>
               </div>
@@ -262,46 +265,46 @@ export function SupportView() {
           </div>
 
           {/* Priority Levels Explanation */}
-          <div className="mb-14">
-            <div className="mb-6">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#224C75]">
+          <div className="mb-16">
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E2B61]/10 text-[#0E2B61] text-xs font-bold uppercase tracking-wider mb-2">
                 Triage Hierarchy
-              </span>
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mt-1">
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950">
                 Support Priority Definitions
               </h3>
-              <p className="text-xs sm:text-sm text-gray-600 mt-1">
+              <p className="text-sm sm:text-base text-slate-600 mt-1 max-w-2xl">
                 When logging an issue, select the priority level that accurately reflects your business operational impact.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {priorityDefinitions.map((item) => (
                 <div
                   key={item.level}
-                  className="p-6 rounded-2xl bg-[#F9FAFB] border border-gray-200/80 flex flex-col justify-between"
+                  className="p-8 rounded-3xl bg-slate-50 border border-slate-200/90 shadow-2xs flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${item.badgeClass}`}>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full border ${item.badgeClass}`}>
                         {item.badge}
                       </span>
                     </div>
 
-                    <h4 className="text-base font-semibold text-gray-900 mb-1">
+                    <h4 className="text-xl font-bold text-slate-950 mb-1">
                       {item.level}
                     </h4>
-                    <p className="text-xs font-medium text-gray-500 mb-3">
+                    <p className="text-xs font-semibold text-[#0E2B61] mb-3">
                       {item.title}
                     </p>
 
-                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4">
+                    <p className="text-sm text-slate-600 leading-relaxed mb-6">
                       {item.description}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-gray-200/60 text-[11px] text-gray-500">
-                    <strong className="text-gray-700">Criteria:</strong> {item.criteria}
+                  <div className="pt-4 border-t border-slate-200 text-xs text-slate-500">
+                    <strong className="text-slate-800">Criteria:</strong> {item.criteria}
                   </div>
                 </div>
               ))}
@@ -309,64 +312,64 @@ export function SupportView() {
           </div>
 
           {/* Interactive Support Request Flow */}
-          <div className="rounded-3xl border border-gray-200/90 bg-[#F9FAFB] p-6 sm:p-10 shadow-2xs">
-            <div className="max-w-2xl mb-8">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#224C75]">
+          <div className="rounded-3xl border border-slate-200/90 bg-slate-50 p-8 sm:p-12 shadow-sm">
+            <div className="max-w-2xl mb-10">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0E2B61]">
                 Incident Dispatch Flow
               </span>
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mt-1">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 mt-1">
                 Log an Enterprise Support Ticket
               </h3>
-              <p className="text-xs sm:text-sm text-gray-600 mt-1.5 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 mt-2 leading-relaxed">
                 Provide your incident details below. Submissions are registered to our engineering triage queue with an official ticket number for duty manager dispatch.
               </p>
             </div>
 
             {status === "success" ? (
-              <div className="bg-white p-7 sm:p-9 rounded-2xl border border-emerald-200 shadow-sm space-y-5">
-                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
-                  <CheckCircle2 className="w-6 h-6" />
+              <div className="bg-white p-8 sm:p-10 rounded-2xl border border-emerald-200 shadow-sm space-y-6">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                  <CheckCircle2 className="w-7 h-7" />
                 </div>
 
                 <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700">
+                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                     Support Incident Registered
                   </span>
-                  <h4 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
+                  <h4 className="text-2xl sm:text-3xl font-extrabold text-slate-950 mt-1">
                     Ticket Logged Successfully
                   </h4>
-                  <p className="text-sm text-gray-600 mt-2 leading-relaxed">
+                  <p className="text-base text-slate-600 mt-2 leading-relaxed">
                     Your support request has been registered in the Dervac engineering queue. For high-priority and critical incidents, our duty technicians also monitor WhatsApp for direct coordination.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs space-y-2">
-                  <div className="flex justify-between items-center text-gray-600">
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-sm space-y-3">
+                  <div className="flex justify-between items-center text-slate-600">
                     <span>Ticket Number:</span>
-                    <span className="font-mono font-bold text-gray-900 text-base">
+                    <span className="font-mono font-bold text-slate-900 text-lg">
                       {ticketNumber}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center text-gray-600">
+                  <div className="flex justify-between items-center text-slate-600">
                     <span>Organization:</span>
-                    <span className="font-medium text-gray-800">{organization}</span>
+                    <span className="font-semibold text-slate-900">{organization}</span>
                   </div>
-                  <div className="flex justify-between items-center text-gray-600">
+                  <div className="flex justify-between items-center text-slate-600">
                     <span>Severity Level:</span>
-                    <span className="font-semibold text-[#224C75]">{priority}</span>
+                    <span className="font-bold text-[#0E2B61]">{priority}</span>
                   </div>
-                  <div className="flex justify-between items-center text-gray-600">
+                  <div className="flex justify-between items-center text-slate-600">
                     <span>Incident Subject:</span>
-                    <span className="font-medium text-gray-800">{ticketSubject}</span>
+                    <span className="font-semibold text-slate-900">{ticketSubject}</span>
                   </div>
                 </div>
 
-                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                   <a
                     href={whatsappEscalationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-2"
+                    className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-xs transition-colors flex items-center justify-center gap-2"
                   >
                     <MessageSquare className="w-4 h-4" />
                     <span>Escalate on WhatsApp With Ticket ID</span>
@@ -375,9 +378,9 @@ export function SupportView() {
                   <button
                     type="button"
                     onClick={resetForm}
-                    className="px-4 py-2.5 rounded-xl border border-gray-300 hover:bg-gray-50 text-gray-700 text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="px-5 py-3.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition-colors flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <RefreshCw className="w-3.5 h-3.5 text-gray-500" />
+                    <RefreshCw className="w-4 h-4 text-slate-500" />
                     <span>Log Another Incident</span>
                   </button>
                 </div>
@@ -400,19 +403,19 @@ export function SupportView() {
 
                 {/* Error Notification */}
                 {errorMessage && (
-                  <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2.5">
-                    <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-sm text-red-700 flex items-start gap-3">
+                    <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                     <div>
-                      <strong className="font-semibold">Submission Error:</strong>{" "}
+                      <strong className="font-bold">Submission Error:</strong>{" "}
                       {errorMessage}
                     </div>
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Organization Name */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                       Organization / Client Name *
                     </label>
                     <input
@@ -422,13 +425,13 @@ export function SupportView() {
                       value={organization}
                       onChange={(e) => setOrganization(e.target.value)}
                       placeholder="e.g. Apex Health Clinic / Horizon College"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                     />
                   </div>
 
                   {/* Contact Person */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                       Contact Person & Designation *
                     </label>
                     <input
@@ -438,13 +441,13 @@ export function SupportView() {
                       value={contactName}
                       onChange={(e) => setContactName(e.target.value)}
                       placeholder="e.g. Engr. Babatunde / IT Manager"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                     />
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                       Contact Email Address
                     </label>
                     <input
@@ -453,13 +456,13 @@ export function SupportView() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="babatunde@organization.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                     />
                   </div>
 
                   {/* Phone */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                       Direct Callback Phone Number
                     </label>
                     <input
@@ -468,20 +471,20 @@ export function SupportView() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+234 800 000 0000"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                     />
                   </div>
 
                   {/* Support Priority */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                       Incident Priority Level *
                     </label>
                     <select
                       disabled={status === "submitting"}
                       value={priority}
                       onChange={(e) => setPriority(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75]"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61]"
                     >
                       <option value="Priority 1 (Critical)">Priority 1 (Critical) — Complete Outage / Exam Halt</option>
                       <option value="Priority 2 (High)">Priority 2 (High) — Degraded Server / Intermittent Error</option>
@@ -491,14 +494,14 @@ export function SupportView() {
 
                   {/* Organization Size */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                      Environment / Infrastructure Scale
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
+                      Infrastructure Scale
                     </label>
                     <select
                       disabled={status === "submitting"}
                       value={orgSize}
                       onChange={(e) => setOrgSize(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75]"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61]"
                     >
                       <option value="1–25 Workstations / Users">Small (1–25 Workstations / Devices)</option>
                       <option value="26–100 Workstations / Users">Medium (26–100 Workstations / Devices)</option>
@@ -509,7 +512,7 @@ export function SupportView() {
 
                 {/* Subject */}
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                     Incident Summary / Subject *
                   </label>
                   <input
@@ -519,13 +522,13 @@ export function SupportView() {
                     value={ticketSubject}
                     onChange={(e) => setTicketSubject(e.target.value)}
                     placeholder="e.g. Core switch offline in Server Room B / Medisure report sync error"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                   />
                 </div>
 
                 {/* Description */}
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
                     Detailed Symptoms & System Notes
                   </label>
                   <textarea
@@ -534,16 +537,16 @@ export function SupportView() {
                     value={issueDetails}
                     onChange={(e) => setIssueDetails(e.target.value)}
                     placeholder="Describe when the incident began, affected IP addresses or modules, and any troubleshooting already performed..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#224C75] disabled:bg-gray-100"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0E2B61] disabled:bg-slate-100"
                   />
                 </div>
 
                 {/* Dual Action Buttons */}
-                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="px-6 py-3 rounded-xl bg-[#224C75] hover:bg-[#1a3a5a] text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                    className="px-7 py-3.5 rounded-xl bg-[#0E2B61] hover:bg-[#07132B] text-white text-sm font-bold shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                   >
                     {status === "submitting" ? (
                       <>
@@ -560,9 +563,9 @@ export function SupportView() {
 
                   <a
                     href={mailtoSupportUrl}
-                    className="px-5 py-3 rounded-xl bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 text-xs sm:text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                    className="px-6 py-3.5 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                   >
-                    <Mail className="w-3.5 h-3.5 text-[#224C75]" />
+                    <Mail className="w-4 h-4 text-[#0E2B61]" />
                     <span>Dispatch via Email</span>
                   </a>
                 </div>

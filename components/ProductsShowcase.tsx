@@ -80,6 +80,9 @@ export function ProductsShowcase() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
               <div className="flex flex-wrap items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-[#224C75]/40 text-blue-300 flex items-center justify-center">
+                  <IconComponent className="w-4 h-4" />
+                </div>
                 <span className="px-3 py-1 rounded-full bg-[#224C75]/30 text-[#6ba4d9] border border-[#224C75]/50 text-xs font-semibold">
                   {activeProduct.badge}
                 </span>

@@ -95,10 +95,13 @@
 @layer base {
   :root {
     --background: #ffffff;
-    --foreground: #111827;
+    --foreground: #0f172a;
+    --brand-navy-dark: #07132b;
     --brand-navy: #0e2b61;
     --brand-blue: #224c75;
-    --brand-accent: #224c75;
+    --brand-accent: #2563eb;
+    --brand-light: #f8fafc;
+    --surface-border: #e2e8f0;
   }
 
   html {
@@ -108,7 +111,7 @@
 
   body {
     background-color: #ffffff;
-    color: #111827;
+    color: #0f172a;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -117,11 +120,48 @@
 
   ::selection {
     background: rgba(34, 76, 117, 0.2);
-    color: #224c75;
+    color: #0e2b61;
   }
 }
 
-/* Subtle Hero Dotted Texture matching the ChronoTask reference screenshot */
+/* Subtle Technical Grid & Dot Patterns */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(14, 43, 97, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 43, 97, 0.04) 1px, transparent 1px);
+}
+
+.bg-tech-grid-dark {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(14, 43, 97, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-tech-dots-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism Card for Strategic Dark Sections */
+.glass-panel-dark {
+  background: rgba(11, 27, 61, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-dark:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Subtle Hero Dotted Texture */
 .hero-dot-pattern {
   background-color: #f8f9fa;
   background-image: radial-gradient(#d1d5db 1.25px, transparent 1.25px);

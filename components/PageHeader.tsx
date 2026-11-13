@@ -18,42 +18,46 @@ export function PageHeader({
   breadcrumbs,
 }: PageHeaderProps) {
   return (
-    <div className="relative pt-10 sm:pt-14 pb-10 sm:pb-12 bg-[#F9FAFB] border-b border-gray-200/80">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative pt-12 sm:pt-16 pb-12 sm:pb-16 bg-[#07132B] text-white border-b border-slate-800 overflow-hidden">
+      {/* Background Tech Texture */}
+      <div className="absolute inset-0 bg-tech-grid-dark opacity-15 pointer-events-none" />
+      <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#2563EB] rounded-full filter blur-[128px] opacity-20 pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb nav */}
-        <nav className="flex items-center gap-1.5 text-xs text-gray-500 mb-4 font-medium" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-gray-900 transition-colors">
+        <nav className="flex items-center gap-2 text-xs text-slate-400 mb-5 font-medium" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-white transition-colors">
             Home
           </Link>
           {breadcrumbs.map((crumb, idx) => (
             <React.Fragment key={idx}>
-              <ChevronRight className="w-3.5 h-3.5 text-gray-400" />
+              <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
               {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-gray-900 transition-colors">
+                <Link href={crumb.href} className="hover:text-white transition-colors">
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-gray-800 font-semibold">{crumb.label}</span>
+                <span className="text-white font-semibold">{crumb.label}</span>
               )}
             </React.Fragment>
           ))}
         </nav>
 
         {/* Pill Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#224C75]/10 border border-[#224C75]/20 text-[#224C75] text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/15 text-blue-300 text-xs font-bold uppercase tracking-wider mb-4">
           {badge}
         </div>
 
         {/* Title */}
-        <h1 className="text-2xl sm:text-4xl lg:text-[40px] font-normal tracking-[-0.02em] leading-tight text-gray-900 max-w-3xl mb-3">
-          <span className="font-medium">{title}</span>{" "}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white max-w-3xl mb-4">
+          <span>{title}</span>{" "}
           {highlightedTitle && (
-            <span className="text-gray-500 font-normal">{highlightedTitle}</span>
+            <span className="text-blue-400 block sm:inline font-extrabold">{highlightedTitle}</span>
           )}
         </h1>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-gray-600 max-w-2xl leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
           {description}
         </p>
       </div>
