@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Code2,
   Server,
@@ -8,9 +9,18 @@ import {
   BookOpenCheck,
   Building2,
   ArrowRight,
-  Check,
+  CheckCircle2,
 } from "lucide-react";
 import { servicesData } from "@/data/services";
+
+const serviceImageMap: Record<string, string> = {
+  "software-development": "/images/infrastructure/engineer_hands_hardware.jpg",
+  "infrastructure-support": "/images/infrastructure/server_hardware.jpg",
+  "security-cybersecurity": "/images/infrastructure/cyber_soc.jpg",
+  "ict-training-academy": "/images/genuine/coder-74954f98.jpg",
+  "educational-technology": "/images/infrastructure/cbt_lab.jpg",
+  "coworking-hub": "/images/coworking_hub.jpg",
+};
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Code2,
@@ -23,73 +33,96 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export function CoreServices() {
   return (
-    <section className="py-16 sm:py-20 bg-white border-b border-gray-150">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#224C75]/10 border border-[#224C75]/20 text-[#224C75] text-xs font-semibold uppercase tracking-wider mb-3">
-              Core Capabilities
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E2B61]/10 text-[#0E2B61] text-xs font-bold uppercase tracking-wider mb-4">
+              Core Service Divisions
             </div>
-            <h2 className="text-2xl sm:text-4xl font-normal text-gray-900 tracking-tight leading-tight">
-              End-to-end ICT engineering and technology infrastructure.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
+              Enterprise ICT Engineering & Infrastructure Solutions.
             </h2>
           </div>
-          <p className="max-w-md text-sm sm:text-base text-gray-600 leading-relaxed">
-            From software architecture and systems integration to enterprise server infrastructure, CBT test centres, and professional digital talent development.
+          <p className="max-w-md text-base sm:text-lg text-slate-600 leading-relaxed">
+            Dervac designs, builds, and maintains the technology backbones of commercial enterprises, academic institutions, and healthcare providers across Nigeria.
           </p>
         </div>
 
         {/* 3x2 Grid of Genuine Dervac Services */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service) => {
             const Icon = iconMap[service.iconName] || Code2;
+            const cardImg = serviceImageMap[service.id] || "/images/infrastructure/server_hardware.jpg";
+
             return (
               <div
                 key={service.id}
-                className="flex flex-col justify-between p-6 rounded-2xl bg-[#F9FAFB] border border-gray-200/80 hover:border-gray-300 transition-colors"
+                className="group flex flex-col justify-between rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:shadow-md hover:border-slate-300 transition-all duration-300 overflow-hidden"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-[#224C75]/10 border border-[#224C75]/20 text-[#224C75] flex items-center justify-center">
-                      <Icon className="w-5 h-5" />
+                  {/* Card Visual Header */}
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-900">
+                    <Image
+                      src={cardImg}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                    
+                    {/* Badge and Icon Overlay */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#0E2B61] text-xs font-bold shadow-xs">
+                        {service.category}
+                      </span>
+                      <div className="w-9 h-9 rounded-xl bg-[#0E2B61] text-white flex items-center justify-center shadow-md">
+                        <Icon className="w-4.5 h-4.5" />
+                      </div>
                     </div>
-                    <span className="text-[11px] font-medium text-gray-500 bg-white px-2.5 py-1 rounded-full border border-gray-200/60">
-                      {service.category}
-                    </span>
+
+                    <div className="absolute bottom-3 left-4 text-xs font-semibold text-slate-200">
+                      {service.badge}
+                    </div>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                    {service.title}
-                  </h3>
+                  {/* Card Body */}
+                  <div className="p-6 sm:p-7">
+                    <h3 className="text-xl font-bold text-slate-950 mb-3 group-hover:text-[#0E2B61] transition-colors">
+                      {service.title}
+                    </h3>
 
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4">
-                    {service.shortDescription}
-                  </p>
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
+                      {service.shortDescription}
+                    </p>
 
-                  <ul className="space-y-2 mb-6">
-                    {service.capabilities.slice(0, 3).map((cap, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-xs text-gray-600"
-                      >
-                        <Check className="w-3.5 h-3.5 text-[#224C75] mt-0.5 flex-shrink-0 stroke-[2.5]" />
-                        <span>{cap}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <div className="space-y-2.5 pt-2 border-t border-slate-100 mb-6">
+                      <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                        Key Capabilities
+                      </div>
+                      {service.capabilities.slice(0, 3).map((cap, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                          <span>{cap}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="pt-4 border-t border-gray-200/60 flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-500">
-                    {service.badge}
-                  </span>
+                {/* Card Footer */}
+                <div className="p-6 pt-0">
                   <Link
                     href={`/services#${service.slug}`}
-                    className="text-xs font-semibold text-[#224C75] hover:text-[#1a3a5a] inline-flex items-center gap-1"
+                    className="w-full py-2.5 px-4 rounded-xl bg-slate-50 hover:bg-[#0E2B61] hover:text-white text-slate-900 border border-slate-200/80 font-semibold text-xs sm:text-sm transition-all flex items-center justify-between group/link"
                   >
-                    <span>View details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>View Technical Specifications</span>
+                    <ArrowRight className="w-4 h-4 text-[#0E2B61] group-hover/link:text-white transition-colors" />
                   </Link>
                 </div>
               </div>
@@ -97,16 +130,21 @@ export function CoreServices() {
           })}
         </div>
 
-        {/* Bottom CTA Bar */}
-        <div className="mt-10 p-5 rounded-2xl bg-[#F8FAFC] border border-gray-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">
-            Looking for a customized technology arrangement or enterprise service level agreement?
+        {/* Bottom SLA Callout */}
+        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-[#0E2B61] text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+          <div className="space-y-1 text-center md:text-left">
+            <h4 className="text-lg sm:text-xl font-bold">
+              Require a Custom Enterprise SLA or Turnkey Project Scope?
+            </h4>
+            <p className="text-sm sm:text-base text-slate-300 max-w-2xl">
+              Our solution architects conduct comprehensive site audits and architecture scoping before recommending any procurement.
+            </p>
           </div>
           <Link
             href="/services"
-            className="px-4 py-2 rounded-lg bg-white border border-gray-200/80 hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-900 transition-colors shadow-2xs whitespace-nowrap"
+            className="px-6 py-3 rounded-xl bg-white hover:bg-slate-100 text-[#0E2B61] font-bold text-sm transition-colors whitespace-nowrap shadow-sm"
           >
-            Explore all 6 service divisions
+            Explore Services Directory
           </Link>
         </div>
       </div>

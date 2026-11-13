@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   X,
   Send,
@@ -132,15 +132,15 @@ export function ConsultationModal({
         {/* Sticky Header with Always-Visible Close Button */}
         <div className="flex items-start justify-between p-4 sm:p-6 border-b border-gray-200/80 bg-[#F9FAFB] shrink-0 gap-3">
           <div className="min-w-0 pr-2">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#224C75]/10 border border-[#224C75]/20 text-[11px] sm:text-xs font-semibold text-[#224C75] mb-1.5 sm:mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#224C75] animate-pulse" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0E2B61]/10 border border-[#0E2B61]/20 text-xs font-bold uppercase tracking-wider text-[#0E2B61] mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0E2B61] animate-pulse" />
               Direct Engineering Consultation
             </div>
-            <h3 className="text-lg sm:text-2xl font-bold text-gray-900 leading-tight">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-950 leading-tight">
               Connect With Dervac Architects
             </h3>
-            <p className="text-xs sm:text-sm text-gray-600 mt-1 line-clamp-1 sm:line-clamp-none">
-              Discuss enterprise infrastructure, custom software, CBT centres, or tech training.
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 line-clamp-1 sm:line-clamp-none">
+              Discuss enterprise infrastructure, custom software, CBT centres, or tech training with licensed practitioners.
             </p>
           </div>
 
@@ -360,7 +360,7 @@ export function ConsultationModal({
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-[#224C75] hover:bg-[#1a3a5a] text-white font-semibold text-sm transition-all text-center cursor-pointer disabled:opacity-60"
+                    className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-[#0E2B61] hover:bg-[#07132B] text-white font-bold text-sm transition-all text-center cursor-pointer disabled:opacity-60 shadow-sm"
                   >
                     {status === "submitting" ? (
                       <>

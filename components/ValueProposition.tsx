@@ -3,8 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Award, ShieldCheck, Scale, Cpu, HeadphonesIcon } from "lucide-react";
-import { companyData } from "@/data/company";
+import { ArrowRight, Award, Scale, Cpu, HeadphonesIcon } from "lucide-react";
 
 export function ValueProposition() {
   const valueItems = [
@@ -87,7 +86,7 @@ export function ValueProposition() {
 
           {/* Right Column: 2x2 Value Matrix (Image 3 Right) */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {valueItems.map((item, idx) => {
+            {valueItems.map((item) => {
               const Icon = item.icon;
               return (
                 <div

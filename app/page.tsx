@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import { TrustProofStrip } from "@/components/TrustProofStrip";
 import { Introduction } from "@/components/Introduction";
 import { CoreServices } from "@/components/CoreServices";
+import { RealWorldCapabilities } from "@/components/RealWorldCapabilities";
+import { HowWeWork } from "@/components/HowWeWork";
 import { ProductsSolutions } from "@/components/ProductsSolutions";
 import { PartnersEcosystem } from "@/components/PartnersEcosystem";
 import { ContactCTA } from "@/components/ContactCTA";
@@ -19,8 +22,11 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Hero />
+      <TrustProofStrip />
       <Introduction />
       <CoreServices />
+      <RealWorldCapabilities />
+      <HowWeWork />
       <ProductsSolutions />
       <PartnersEcosystem />
       <ContactCTA />

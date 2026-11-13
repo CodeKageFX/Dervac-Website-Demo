@@ -143,16 +143,16 @@ export function InteractiveEstimator() {
     <section className="py-12 sm:py-16 bg-[#F9FAFB] border-t border-gray-200/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#224C75]/10 border border-[#224C75]/20 text-xs font-semibold text-[#224C75] uppercase tracking-wider mb-2.5">
-            <Calculator className="w-3.5 h-3.5 text-[#224C75]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0E2B61]/10 border border-[#0E2B61]/20 text-xs font-bold text-[#0E2B61] uppercase tracking-wider mb-2.5">
+            <Calculator className="w-3.5 h-3.5 text-[#0E2B61]" />
             Interactive Scope Planner
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 tracking-tight leading-tight mb-2">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight leading-tight mb-2">
             Configure Your Project Scope
           </h2>
 
-          <p className="text-xs sm:text-sm text-gray-600">
+          <p className="text-xs sm:text-sm text-slate-600">
             Select your technical requirements to generate a structured enterprise brief for Dervac solution architects. Indicative only; final scopes are formalized after technical discovery.
           </p>
         </div>

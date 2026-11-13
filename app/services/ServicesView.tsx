@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Code2,
   Server,
@@ -11,7 +12,6 @@ import {
   Building2,
   CheckCircle2,
   PhoneCall,
-  Clock,
   Briefcase,
   ChevronRight,
 } from "lucide-react";
@@ -20,6 +20,15 @@ import { servicesData, ServiceItem } from "@/data/services";
 import { ConsultationModal } from "@/components/ConsultationModal";
 import { InteractiveEstimator } from "@/components/InteractiveEstimator";
 import { companyData } from "@/data/company";
+
+const serviceImageMap: Record<string, string> = {
+  "software-development": "/images/infrastructure/engineer_hands_hardware.jpg",
+  "infrastructure-support": "/images/infrastructure/server_hardware.jpg",
+  "security-cybersecurity": "/images/infrastructure/cyber_soc.jpg",
+  "ict-training-academy": "/images/genuine/coder-74954f98.jpg",
+  "educational-technology": "/images/infrastructure/cbt_lab.jpg",
+  "coworking-hub": "/images/coworking_hub.jpg",
+};
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Code2,
@@ -66,6 +75,7 @@ export function ServicesView() {
     servicesData.find((s) => s.id === selectedServiceId) || servicesData[0];
 
   const IconComp = iconMap[activeService.iconName] || Code2;
+  const currentImage = serviceImageMap[activeService.id] || "/images/infrastructure/server_hardware.jpg";
 
   return (
     <>
@@ -79,8 +89,8 @@ export function ServicesView() {
         />
 
         {/* Section Navigation Bar */}
-        <section className="sticky top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200/80 py-3">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="sticky top-18 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 py-3 shadow-2xs">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Mobile Dropdown */}
             <div className="lg:hidden">
               <label htmlFor="service-select" className="sr-only">
@@ -90,7 +100,7 @@ export function ServicesView() {
                 id="service-select"
                 value={selectedServiceId}
                 onChange={(e) => setSelectedServiceId(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 bg-white text-sm font-medium text-gray-800 shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#224C75]"
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-800 shadow-2xs focus:outline-none focus:ring-2 focus:ring-[#0E2B61]"
               >
                 {servicesData.map((svc) => (
                   <option key={svc.id} value={svc.id}>
@@ -108,10 +118,10 @@ export function ServicesView() {
                   <button
                     key={svc.id}
                     onClick={() => setSelectedServiceId(svc.id)}
-                    className={`px-3.5 py-2 rounded-xl text-xs sm:text-[13px] font-medium transition-all whitespace-nowrap cursor-pointer ${
+                    className={`px-4 py-2.5 rounded-xl text-xs sm:text-[13px] font-bold transition-all whitespace-nowrap cursor-pointer ${
                       isActive
-                        ? "bg-[#224C75] text-white shadow-xs font-semibold"
-                        : "bg-[#F9FAFB] text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-200/70"
+                        ? "bg-[#0E2B61] text-white shadow-sm"
+                        : "bg-slate-50 text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200/80"
                     }`}
                   >
                     {svc.title}
@@ -123,63 +133,73 @@ export function ServicesView() {
         </section>
 
         {/* Dedicated Service View: ONLY the selected service is displayed */}
-        <section className="py-12 sm:py-16">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl border border-gray-200/90 bg-[#F9FAFB] p-6 sm:p-10 shadow-2xs">
-              {/* Header: Category Badge, Icon, Title */}
-              <div className="border-b border-gray-200/70 pb-6 mb-8">
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <div className="flex items-center gap-2.5">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#224C75] bg-[#224C75]/10 px-3 py-1 rounded-full border border-[#224C75]/20">
-                      {activeService.category}
-                    </span>
-                    <span className="text-xs text-gray-500 bg-white px-2.5 py-1 rounded-full border border-gray-200">
-                      {activeService.badge}
-                    </span>
-                  </div>
-                  <div className="text-xs font-medium text-gray-500 flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-[#224C75]" />
-                    <span>Focus: {activeService.metrics.label} ({activeService.metrics.value})</span>
+        <section className="py-16 sm:py-20">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl border border-slate-200/90 bg-slate-50 p-6 sm:p-12 shadow-sm overflow-hidden">
+              {/* Header Image Feature */}
+              <div className="relative h-64 sm:h-80 w-full rounded-2xl overflow-hidden mb-8 bg-slate-950">
+                <Image
+                  src={currentImage}
+                  alt={activeService.title}
+                  fill
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <span className="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-[#0E2B61] text-xs font-bold shadow-xs">
+                    {activeService.category}
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-mono">
+                    {activeService.badge}
+                  </span>
+                </div>
+                <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-white">
+                  <div className="text-xs font-semibold text-slate-300">
+                    Deployment Standard: {activeService.metrics.label} — {activeService.metrics.value}
                   </div>
                 </div>
+              </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white border border-gray-200 shadow-2xs text-[#224C75] flex items-center justify-center flex-shrink-0">
-                    <IconComp className="w-6 h-6" />
+              {/* Title & Short Description */}
+              <div className="border-b border-slate-200 pb-8 mb-8">
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 shadow-2xs text-[#0E2B61] flex items-center justify-center flex-shrink-0">
+                    <IconComp className="w-7 h-7" />
                   </div>
                   <div>
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 leading-tight">
+                    <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 leading-tight">
                       {activeService.title}
                     </h2>
-                    <p className="text-sm sm:text-base text-gray-600 mt-2 leading-relaxed">
+                    <p className="text-base sm:text-lg text-slate-600 mt-2 leading-relaxed">
                       {activeService.shortDescription}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Full Description & Context */}
-              <div className="mb-8">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2">
+              {/* Scope & Full Description */}
+              <div className="mb-10">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#0E2B61] mb-3">
                   Scope & Architectural Overview
                 </h3>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed bg-white p-5 rounded-2xl border border-gray-200/80">
+                <div className="text-base sm:text-lg text-slate-700 leading-relaxed bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/90 shadow-2xs">
                   {activeService.fullDescription}
-                </p>
+                </div>
               </div>
 
               {/* Capabilities & Deliverables Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 {/* Core Capabilities */}
-                <div className="p-6 rounded-2xl bg-white border border-gray-200/80 space-y-3">
-                  <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
-                    <Briefcase className="w-4 h-4 text-[#224C75]" />
+                <div className="p-7 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-4">
+                  <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                    <Briefcase className="w-5 h-5 text-[#0E2B61]" />
                     <span>Technical Capabilities</span>
                   </h3>
-                  <ul className="space-y-2.5 pt-1">
+                  <ul className="space-y-3 pt-1">
                     {activeService.capabilities.map((cap, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                        <CheckCircle2 className="w-4 h-4 text-[#224C75] mt-0.5 flex-shrink-0" />
+                      <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 leading-relaxed">
+                        <CheckCircle2 className="w-4 h-4 text-[#0E2B61] mt-0.5 flex-shrink-0" />
                         <span>{cap}</span>
                       </li>
                     ))}
@@ -187,14 +207,14 @@ export function ServicesView() {
                 </div>
 
                 {/* Concrete Deliverables */}
-                <div className="p-6 rounded-2xl bg-white border border-gray-200/80 space-y-3">
-                  <h3 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <div className="p-7 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-4">
+                  <h3 className="text-base font-bold text-slate-950 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                     <span>Standard Project Deliverables</span>
                   </h3>
-                  <ul className="space-y-2.5 pt-1">
+                  <ul className="space-y-3 pt-1">
                     {activeService.deliverables.map((deliv, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
+                      <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700 leading-relaxed">
                         <ChevronRight className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
                         <span>{deliv}</span>
                       </li>
@@ -204,15 +224,15 @@ export function ServicesView() {
               </div>
 
               {/* Target Sectors */}
-              <div className="p-5 rounded-2xl bg-white border border-gray-200/80 mb-8">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
-                  Applicable Sectors & Client Environments
+              <div className="p-6 rounded-2xl bg-white border border-slate-200/90 mb-10 shadow-2xs">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                  Applicable Sectors & Enterprise Environments
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {activeService.targetSectors.map((sector) => (
                     <span
                       key={sector}
-                      className="px-3 py-1 rounded-lg bg-gray-50 border border-gray-200 text-xs font-medium text-gray-700"
+                      className="px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-semibold text-slate-800"
                     >
                       {sector}
                     </span>
@@ -221,12 +241,12 @@ export function ServicesView() {
               </div>
 
               {/* Action Box: Direct Next Step */}
-              <div className="p-6 rounded-2xl bg-[#224C75]/5 border border-[#224C75]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="p-8 rounded-3xl bg-[#0E2B61] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-900">
-                    Need consultation on {activeService.title}?
+                  <h4 className="text-lg sm:text-xl font-bold">
+                    Need Consultation on {activeService.title}?
                   </h4>
-                  <p className="text-xs text-gray-600 mt-0.5">
+                  <p className="text-sm text-slate-300 mt-1 max-w-xl">
                     Speak directly with our solution architects at our Palmgrove Hub or Ikeja HQ.
                   </p>
                 </div>
@@ -234,31 +254,31 @@ export function ServicesView() {
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                   <button
                     onClick={() => setConsultationModalOpen(true)}
-                    className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl bg-[#224C75] hover:bg-[#1a3a5a] text-white text-xs sm:text-sm font-medium shadow-xs transition-colors cursor-pointer whitespace-nowrap"
+                    className="flex-1 sm:flex-initial px-6 py-3 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-bold shadow-xs transition-colors cursor-pointer whitespace-nowrap"
                   >
                     Schedule Consultation
                   </button>
                   <a
-                    href={`tel:${companyData.contacts.generalPhone}`}
-                    className="px-3.5 py-2.5 rounded-xl bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-xs sm:text-sm font-medium transition-colors inline-flex items-center gap-1.5"
+                    href={`tel:${companyData.contacts.generalPhone.replace(/\s+/g, "")}`}
+                    className="px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-bold transition-colors inline-flex items-center gap-2 border border-white/15"
                     title="Call Engineering Desk"
                   >
-                    <PhoneCall className="w-3.5 h-3.5 text-[#224C75]" />
-                    <span className="hidden md:inline">Call Hotline</span>
+                    <PhoneCall className="w-4 h-4" />
+                    <span>Call Hotline</span>
                   </a>
                 </div>
               </div>
             </div>
 
             {/* Quick link to proprietary software products */}
-            <div className="mt-8 text-center">
-              <p className="text-xs sm:text-sm text-gray-500">
+            <div className="mt-10 text-center">
+              <p className="text-sm text-slate-500">
                 Looking for Dervac proprietary software systems like Medisure or LIMS?{" "}
                 <Link
                   href="/products"
-                  className="font-medium text-[#224C75] hover:text-[#1a3a5a] underline"
+                  className="font-bold text-[#0E2B61] hover:text-[#2563EB] underline underline-offset-2"
                 >
-                  View our Software Products & Platforms
+                  View our Proprietary Software Systems
                 </Link>
               </p>
             </div>
